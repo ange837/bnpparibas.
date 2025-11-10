@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartes Bancaires</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+
+  <div class="welcome">
+    <h4>Cartes</h4>
+  </div>
+
+  <div class="logout">
+    <i class="fas fa-power-off"></i>
+    <a href="page1.html">Déconnexion</a>
+  </div>
+
+  <!-- Carte bancaire -->
+  <div class="card_container">
+    <div class="card">
+      <div class="flip-card-inner">
+        <!-- Recto -->
+        <div class="flip-card-front">
+          <div class="banque_name">
+            <img src="bnp.png" alt="Banque">
+            <p>CARTE BLACK</p>
+          </div>
+          <div class="puce_container">
+            <div class="puce_logo">
+              <img src="chip.png" alt="Puce" />
+            </div>
+            <div class="wifi">
+              <img src="wifi.png" alt="WiFi" />
+            </div>
+          </div>
+          <div class="number">
+            <h3>4157 4589 6124 3527</h3>
+          </div>
+          <div class="expire">
+            <span>EXPIRE LE</span>
+            <span>10/25</span>
+          </div>
+          <div class="name_logo">
+            <div class="card_name">M.Martin Greenberg</div>
+            <div class="logo_card">
+              <img src="visa.jpg" alt="Visa" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Verso -->
+        <div class="flip-card-back">
+          <div class="magnetic-strip"></div>
+          <div class="signature-strip">
+            <span>CVV</span>
+            <div class="cvv">984</div>
+          </div>
+          <div class="logo_card_back">
+            <img src="visa.jpg" alt="Visa" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paramètres de la carte -->
+  <div class="settings_card">
+    <div class="back_white">
+      <div class="icon_card"><i class="fa fa-unlock-alt"></i></div>
+      <div class="text_card">
+        <p>Verrouiller la carte</p>
+        <p>Bloquez de façon temporaire</p>
+      </div>
+      <div class="toggle">
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="back_white">
+      <div class="icon_card"><i class="fab fa-apple-pay"></i></div>
+      <div class="text_card">
+        <p>Activer Apple Pay</p>
+        <p>Autoriser liaison à Apple Pay</p>
+      </div>
+      <div class="toggle">
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="back_white">
+      <div class="icon_card"><span class="material-icons">nfc</span></div>
+      <div class="text_card">
+        <p>Activer NFC</p>
+        <p>Activer paiement sans contact</p>
+      </div>
+      <div class="toggle">
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gestionnaire -->
+  <div class="title">
+    <h2><i class="fas fa-user-tie"></i> Votre gestionnaire</h2>
+  </div>
+
+  <div class="gestionnaire">
+    <div class="back_white">
+      <div class="icon_card">
+        <img src="gest.jpg" alt="Gestionnaire">
+      </div>
+      <div class="text_card">
+        <p>Clément Dupont</p>
+        <p>Conseiller personnel</p>
+      </div>
+      <div class="icon_card">
+        <i class="fas fa-phone"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barre de navigation -->
+ 
+ <div class="navigation_bar">
+  <div class="navigation">
+    <ul>
+      <li class="list active">
+        <a href="inter.html" target="_blank">
+          <ion-icon name="cash-outline"></ion-icon>
+          <span>Solde</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="histo.html" target="_blank">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Historique</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="vir.html" target="_blank">
+          <ion-icon name="swap-horizontal-outline"></ion-icon>
+          <span>Virement</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="cart.html">
+          <ion-icon name="card-outline"target="_blank"></ion-icon>
+          <span>Cartes</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="rib.html" target="_blank">
+          <ion-icon name="document-outline"></ion-icon>
+          <span>RIB</span>
+        </a>
+      </li>
+      <div class="indicator"></div>
+    </ul>
+  </div>
+</div>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+  const navItems = document.querySelectorAll('.navigation .list');
+  const indicator = document.querySelector('.navigation .indicator');
+
+  navItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      indicator.style.left = `${index * 70}px`;
+    });
+  });
+
+  // Position de l'indicateur à l'ouverture
+  window.addEventListener('load', () => {
+    const active = document.querySelector('.navigation .list.active');
+    const index = Array.from(navItems).indexOf(active);
+    indicator.style.left = `${index * 70}px`;
+  });
+</script>
+
+</body>
+</html>
+

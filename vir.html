@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virement Bancaire</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <link rel="stylesheet" href="style6.css">
+</head>
+<body>
+  <div class="welcome">
+    <h4>Effectuer un virement</h4>
+    <div class="logout">
+      <i class="fas fa-power-off" style="color: red;"></i>
+      <a href="page1.html">Déconnexion</a>
+    </div>
+  </div>
+
+  <div class="container back_white footer">
+    <div class="gest_pic">
+      <lord-icon
+        src="https://cdn.lordicon.com/pimvysaa.json"
+        trigger="loop"
+        colors="outline:#eeca66,primary:#b26836,secondary:#ffc738"
+        style="width: 60px; height: 60px">
+      </lord-icon>
+    </div>
+    <div class="text_footer">
+      <h5>Prélèvement: Compte courants</h5>
+      <sub>Solde: 530.000 $</sub>
+    </div>
+  </div>
+
+  <div class="container back_white transfert">
+    <div class="title_virement">
+      <h1>Informations du bénéficiaire</h1>
+    </div>
+
+    <div class="inputBox"><input type="text" class="input_!empty" onkeyup="notEmpty()" placeholder=" " required><span>NOM</span></div>
+    <div class="inputBox"><input type="text" class="input_!empty" onkeyup="notEmpty()" placeholder=" " required><span>PRENOM</span></div>
+    <div class="inputBox"><input type="text" class="input_!empty" onkeyup="notEmpty()" placeholder=" " required><span>IBAN</span></div>
+    <div class="inputBox"><input type="text" class="input_!empty" onkeyup="notEmpty()" placeholder=" " required><span>CODE SWIFT</span></div>
+    <div class="inputBox"><input type="text" class="input_!empty" onkeyup="notEmpty()" placeholder=" " required><span>CODE BIC</span></div>
+    <div class="inputBox"><input type="text" class="input_!empty" onkeyup="notEmpty()" placeholder=" " required><span>MONTANT</span></div>
+    <div class="inputBox"><input type="text" class="input_!empty" onkeyup="notEmpty()" placeholder=" " required><span>LIBELLE</span></div>
+
+    <div class="loader" id="loader"></div>
+
+    <div class="button">
+      <button id="btn_valid" disabled onclick="virement_loading()" class="btn_valid">VALIDER</button>
+    </div>
+  </div>
+
+  <div class="title"><h2>Votre gestionnaire</h2></div>
+
+  
+ <div class="navigation_bar">
+  <div class="navigation">
+    <ul>
+      <li class="list active">
+        <a href="inter.html">
+          <ion-icon name="cash-outline"></ion-icon>
+          <span>Solde</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="histo.html" target="_blank">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Historique</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="vir.html" target="_blank">
+          <ion-icon name="swap-horizontal-outline"></ion-icon>
+          <span>Virement</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="cart.html" target="_blank">
+          <ion-icon name="card-outline"></ion-icon>
+          <span>Cartes</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="rib.html" target="_blank">
+          <ion-icon name="document-outline"></ion-icon>
+          <span>RIB</span>
+        </a>
+      </li>
+      <div class="indicator"></div>
+    </ul>
+  </div>
+</div>
+
+  <script>
+    const notEmpty = () => {
+      const inputs = document.querySelectorAll(".input_!empty");
+      const iban = inputs[2].value.trim();
+      const swift = inputs[3].value.trim();
+      const bic = inputs[4].value.trim();
+      const montant = inputs[5].value.trim();
+
+      const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+      const ibanOk = /^[A-Z0-9]{15,34}$/i.test(iban);
+      const swiftOk = /^[A-Z0-9]{8,11}$/i.test(swift) && /^[A-Z0-9]{8,11}$/i.test(bic);
+      const montantOk = /^[0-9]+([.,][0-9]{1,2})?$/.test(montant);
+
+      const btn = document.getElementById("btn_valid");
+      btn.disabled = !(allFilled && ibanOk && swiftOk && montantOk);
+      btn.style.backgroundColor = !btn.disabled ? "slateblue" : "rgb(211, 209, 230)";
+    };
+
+    function virement_loading() {
+      const btn = document.getElementById("btn_valid");
+      const loader = document.getElementById("loader");
+      btn.style.display = "none";
+      loader.style.display = "block";
+
+      setTimeout(() => {
+        alert("Virement effectué avec succès !");
+        loader.style.display = "none";
+        btn.style.display = "inline-block";
+      }, 2000);
+    }
+
+    function logout() {
+      alert("Déconnecté !");
+      window.location.href = "index.html";
+    }
+
+    const list = document.querySelectorAll(".list");
+    list.forEach(item => item.addEventListener("click", function () {
+      list.forEach(i => i.classList.remove("active"));
+      this.classList.add("active");
+    }));
+  </script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+  const navItems = document.querySelectorAll('.navigation .list');
+  const indicator = document.querySelector('.navigation .indicator');
+
+  navItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      indicator.style.left = `${index * 70}px`;
+    });
+  });
+
+  // Position de l'indicateur à l'ouverture
+  window.addEventListener('load', () => {
+    const active = document.querySelector('.navigation .list.active');
+    const index = Array.from(navItems).indexOf(active);
+    indicator.style.left = `${index * 70}px`;
+  });
+</script>
+
+</body>
+</html>

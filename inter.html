@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace Client BNP Paribas</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"/>
+<link rel="stylesheet" href="style2.css">
+<!-- Ionicons CDN -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</head>
+<body>
+  <div style="text-align: center; margin-top: 10px;">
+    <img src="bnp.png" alt="BNP Logo" height="50">
+  </div>
+
+  <div class="welcome"><h4>Bienvenue dans votre espace client</h4></div>
+
+  <div class="logout">
+    <i class="fas fa-power-off" style="font-size: 20px; color: red"></i>
+    <a href="page1.html">Déconnexion</a>
+  </div>
+
+  <div class="container">
+    <h2>M.Martin Greenberg</h2>
+    <div class="country">
+      <i class="fas fa-map-marker-alt" style="font-size: 20px; color: skyblue;"></i> sherbrooke - Quebec 
+    </div>
+    <div class="lastest">Dernière connexion : <span id="timenow"></span></div>
+    <hr />
+    <div class="gestionnaire">Votre gestionnaire : <span>M.Richard Cotard</span></div>
+    <p>Statut du compte : <span class="blink" style="color: red;">Votre compte est bloqué</span></p>
+    <div class="solde">
+      <h3>Solde : <span style="color: green;">800.000 $</span></h3>
+     <marquee behavior="" direction=""> <p class="deblocage">Frais de déblocage : <span style="color: red; font-weight: bold;">80.000 $</span></p></marquee>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Comptes et contrats / Mes comptes</h2>
+    <div class="band">
+      <div class="text">
+        <h3 style="color: gray;">Liquidité N******0254</h3>
+        <h3>10.754,25 $</h3>
+      </div>
+      <div class="icon">
+        <i class="fas fa-eye"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>Comptes Courants | Cartes</h4>
+    <div class="info_comptes">
+      <div class="text"><p>*******2284</p><p>M.Martin Greenberg</p></div>
+      <div class="montant" style="color: green;">+ 530.000 $</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>Crédit</h4>
+    <div class="info_comptes">
+      <div class="text"><p>Crédit auto</p></div>
+      <div class="montant" style="color: red;">- 1.000 $</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>Épargnes et placements</h4>
+    <div class="info_comptes">
+      <div class="text"><p>****** *****5462</p><p>Livret épargnes</p><p>M.Martin Greenberg</p></div>
+      <div class="montant" style="color: green;">+ 10.000 $</div>
+    </div>
+  </div>
+
+  <div class="container" id="stats">
+    <h4><i class="fas fa-chart-line"></i> Statistiques mensuelles</h4>
+    <canvas id="expensesChart" height="100"></canvas>
+    <table class="stats-table">
+      <thead>
+        <tr><th>Mois</th><th>Dépenses ($)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Janvier</td><td>850</td></tr>
+        <tr><td>Février</td><td>920</td></tr>
+        <tr><td>Mars</td><td>740</td></tr>
+        <tr><td>Avril</td><td>990</td></tr>
+        <tr><td>Mai</td><td>880</td></tr>
+      </tbody>
+    </table>
+  </div>
+   <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const now = new Date();
+      const day = now.getDate().toString().padStart(2, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const year = now.getFullYear();
+      document.getElementById("timenow").textContent = `${day} / ${month} / ${year}`;
+
+      const ctx = document.getElementById('expensesChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
+          datasets: [{
+            label: 'Dépenses ($)',
+            data: [850, 920, 740, 990, 880],
+            backgroundColor: '#00966C',
+            borderRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    });
+  </script>
+
+ <div class="navigation_bar">
+  <div class="navigation">
+    <ul>
+      <li class="list active">
+        <a href="inter.html" target="_blank">
+          <ion-icon name="cash-outline"></ion-icon>
+          <span>Solde</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="histo.html" target="_blank">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Historique</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="vir.html" target="_blank">
+          <ion-icon name="swap-horizontal-outline"></ion-icon>
+          <span>Virement</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="cart.html" target="_blank">
+          <ion-icon name="card-outline"></ion-icon>
+          <span>Cartes</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="rib.html" target="_blank">
+          <ion-icon name="document-outline"></ion-icon>
+          <span>RIB</span>
+        </a>
+      </li>
+      <div class="indicator"></div>
+    </ul>
+  </div>
+</div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+  const navItems = document.querySelectorAll('.navigation .list');
+  const indicator = document.querySelector('.navigation .indicator');
+
+  navItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      indicator.style.left = `${index * 70}px`;
+    });
+  });
+
+  // Position de l'indicateur à l'ouverture
+  window.addEventListener('load', () => {
+    const active = document.querySelector('.navigation .list.active');
+    const index = Array.from(navItems).indexOf(active);
+    indicator.style.left = `${index * 70}px`;
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    Swal.fire({
+      title: '⚠️ Compte bloqué',
+      html: '<b>Votre compte est actuellement bloqué.</b><br><br>Veuillez régulariser la situation auprès de votre gestionnaire pour rétablir l\'accès complet.',
+      icon: 'warning',
+      confirmButtonText: 'Contacter mon gestionnaire',
+      confirmButtonColor: '#00966C',
+      background: '#fff',
+      color: '#333',
+      customClass: {
+        popup: 'bnp-popup',
+        title: 'bnp-title',
+        confirmButton: 'bnp-button'
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

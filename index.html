@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion Bancaire</title>
+  <link rel="stylesheet" href="style3.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+  <header>
+    <img src="bnp.png" alt="Logo BNP Paribas">
+  </header>
+  <div class="container">
+    <div class="login-card">
+      <h1>Connexion</h1>
+      <p>Accédez à votre compte bancaire en toute sécurité</p>
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="username">Nom d'utilisateur</label>
+          <input type="text" id="username" placeholder="ex : jean.dupont" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit">Se connecter</button>
+      </form>
+      
+      <div class="footer">
+        <a href="#">Mot de passe oublié ?</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

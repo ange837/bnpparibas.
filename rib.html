@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relevé d'identité bancaire</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="style7.css">
+</head>
+<body>
+  <script src="header.js"></script>
+
+  <div class="welcome">
+    <h4>Relevé d'identité bancaire</h4>
+    <div class="logout">
+      <i class="fas fa-power-off"></i>
+      <a href="page1.html">Déconnexion</a>
+    </div>
+  </div>
+
+  <div class="container back_white mb-1">
+    <div class="rib_title">
+      <h3><img src="bnp.png" alt="logo" style="height: 24px; vertical-align: middle; margin-right: 8px;"> RIB - Identifiant national de compte</h3>
+    </div>
+  </div>
+
+  <div class="container back_white mb-3">
+    <div class="rib_part mb-2">
+      <p class="rib_label">Etablissement</p>
+      <p>20041</p>
+    </div>
+    <div class="rib_part mb-2">
+      <p class="rib_label">GUICHET</p>
+      <p>01004</p>
+    </div>
+    <div class="rib_part mb-2">
+      <p class="rib_label">N° DE COMPTE</p>
+      <p>1277561S025</p>
+    </div>
+    <div class="rib_part mb-2">
+      <p class="rib_label">Clé RIB</p>
+      <p>21</p>
+    </div>
+    <div class="rib_part mb-2">
+      <p class="rib_label">Domiciliation</p>
+      <p>BNP PARIBAS</p>
+    </div>
+  </div>
+
+  <div class="container back_white mb-1">
+    <div class="rib_title">
+      <h3><img src="bnp.png" alt="logo" style="height: 24px; vertical-align: middle; margin-right: 8px;"> RIB - Identifiant international de compte</h3>
+    </div>
+  </div>
+
+  <div class="container back_white mb-3">
+    <div class="rib_part mb-2">
+      <p class="rib_label">IBAN</p>
+      <p id="iban">FR84 2004 1010 0412 7756 1S02 521 <button onclick="copyText('iban')">📋</button></p>
+    </div>
+    <div class="rib_part mb-2">
+      <p class="rib_label">BIC</p>
+      <p id="bic">PSSTFRPPDIJ <button onclick="copyText('bic')">📋</button></p>
+    </div>
+  </div>
+
+  <div class="title">
+    <h2><i class="fas fa-user-tie"></i> Votre gestionnaire</h2>
+  </div>
+
+  <div class="container back_white mb-3">
+    <div class="rib_part">
+      <p class="rib_label">Nom</p>
+      <p>Clément Dupont</p>
+    </div>
+    <div class="rib_part">
+      <p class="rib_label">Téléphone</p>
+      <p><i class="fas fa-phone"></i> 01 44 55 66 77</p>
+    </div>
+  </div>
+
+  <script src="footer.js"></script>
+
+  
+ <div class="navigation_bar">
+  <div class="navigation">
+    <ul>
+      <li class="list active">
+        <a href="inter.html" target="_blank">
+          <ion-icon name="cash-outline"></ion-icon>
+          <span>Solde</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="histo.html" target="_blank">
+          <ion-icon name="time-outline"></ion-icon>
+          <span>Historique</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="vir.html" target="_blank">
+          <ion-icon name="swap-horizontal-outline"></ion-icon>
+          <span>Virement</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="cart.html" target="_blank">
+          <ion-icon name="card-outline"></ion-icon>
+          <span>Cartes</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="rib.html" target="_blank">
+          <ion-icon name="document-outline"></ion-icon>
+          <span>RIB</span>
+        </a>
+      </li>
+      <div class="indicator"></div>
+    </ul>
+  </div>
+</div>
+  <script>
+    const list = document.querySelectorAll(".list");
+    function activeLink() {
+      list.forEach((item) => item.classList.remove("active"));
+      this.classList.add("active");
+    }
+    list.forEach((item) => item.addEventListener("click", activeLink));
+
+    function copyText(id) {
+      const text = document.getElementById(id).textContent.trim();
+      const tempInput = document.createElement("input");
+      tempInput.value = text.replace("📋", "");
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      alert("Copié dans le presse-papier : " + text);
+    }
+  </script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+  const navItems = document.querySelectorAll('.navigation .list');
+  const indicator = document.querySelector('.navigation .indicator');
+
+  navItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      indicator.style.left = `${index * 70}px`;
+    });
+  });
+
+  // Position de l'indicateur à l'ouverture
+  window.addEventListener('load', () => {
+    const active = document.querySelector('.navigation .list.active');
+    const index = Array.from(navItems).indexOf(active);
+    indicator.style.left = `${index * 70}px`;
+  });
+</script>
+
+</body>
+</html>
