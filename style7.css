@@ -1,187 +1,83 @@
-/* style6.css — Thème BNP Paribas */
-
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f8;
-  color: #1d1d1d;
+    font-family: "Inter", sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
-h2, h3, h4 {
-  margin: 0;
-  color: #008656;
+.rib-wrapper {
+    width: 900px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
 }
 
-.welcome {
-  padding: 16px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  border-bottom: 2px solid #008656;
+.rib-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-.logout {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px 16px;
-  background-color: #ffffff;
-  gap: 8px;
-  font-size: 14px;
+.rib-header img {
+    height: 60px;
+    margin-right: 20px;
 }
 
-.logout a {
-  text-decoration: none;
-  color: #e53935;
-  font-weight: bold;
+.rib-header-text h1 {
+    margin: 0;
+    color: #009E60;
 }
 
-.container {
-  margin: 12px 16px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  padding: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+.rib-header-text p {
+    opacity: 0.6;
+    margin-top: 4px;
 }
 
-.back_white {
-  background-color: #ffffff;
+.rib-section {
+    margin-top: 35px;
 }
 
-.mb-1 {
-  margin-bottom: 8px;
+.rib-section h2 {
+    border-left: 6px solid #009E60;
+    padding-left: 10px;
+    color: #009E60;
 }
 
-.mb-2 {
-  margin-bottom: 12px;
+.rib-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-.mb-3 {
-  margin-bottom: 24px;
+.rib-line span {
+    font-weight: 600;
 }
 
-.rib_title {
-  text-align: center;
-  margin-bottom: 8px;
+.btn-download {
+    margin-top: 40px;
+    background: #009E60;
+    border: none;
+    color: white;
+    padding: 14px 22px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.rib_title h3::before {
-  content: url("bnp-small.png"); /* logo BNP miniature si disponible */
-  margin-right: 6px;
-  vertical-align: middle;
+.btn-download:hover {
+    background: #007b4d;
 }
 
-.rib_part {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #e0e0e0;
+/* Impression PDF */
+@media print {
+    body {
+        background: white;
+    }
+    .btn-download {
+        display: none;
+    }
 }
 
-.rib_part:last-child {
-  border-bottom: none;
-}
-
-.rib_label {
-  font-weight: 600;
-  color: #008656;
-}
-
-/* Gestionnaire */
-
-.title {
-  margin: 24px 16px 8px;
-  font-size: 20px;
-  color: #008656;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.title i {
-  font-size: 22px;
-  color: #008656;
-}
-
-.gestionnaire {
-  margin: 0 16px 24px;
-}
-
-.gestionnaire .back_white {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.gestionnaire img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-}
-
-.gestionnaire .text_card {
-  flex-grow: 1;
-  padding: 0 16px;
-}
-
-.gestionnaire .text_card p:first-child {
-  font-weight: bold;
-}
-
-.gestionnaire .fa-phone {
-  font-size: 20px;
-  color: #008656;
-}
-
-/* Navigation */
-
-.navigation_bar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #ffffff;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
-  z-index: 100;
-}
-
-.navigation ul {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  margin: 0;
-  padding: 8px 0;
-}
-
-.navigation .list a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #666;
-  text-decoration: none;
-  font-size: 12px;
-}
-
-.navigation .list.active a {
-  color: #008656;
-  font-weight: bold;
-}
-
-.navigation .list .icon {
-  font-size: 20px;
-}
-
-.navigation .indicator {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 20%;
-  height: 3px;
-  background: #008656;
-  transition: 0.3s;
-  transform: translateX(-50%);
-}
