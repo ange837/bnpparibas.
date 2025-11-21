@@ -1,124 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Relevé d'identité bancaire</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIB BNP Paribas</title>
   <link rel="stylesheet" href="style7.css">
 </head>
+
 <body>
-  <script src="header.js"></script>
 
-  <div class="welcome">
-    <h4>Relevé d'identité bancaire</h4>
-    <div class="logout">
-      <i class="fas fa-power-off"></i>
-      <a href="index.html">Déconnexion</a>
-    </div>
-  </div>
+<div class="rib-wrapper">
 
-  <div class="container back_white mb-1">
-    <div class="rib_title">
-      <h3><img src="bnp.png" alt="logo" style="height: 24px; vertical-align: middle; margin-right: 8px;"> RIB - Identifiant national de compte</h3>
+    <div class="rib-header">
+        <img src="bnp.png" alt="BNP Logo">
+        <div class="rib-header-text">
+            <h1>Relevé d'Identité Bancaire</h1>
+            <p>Document officiel — BNP Paribas</p>
+        </div>
     </div>
-  </div>
 
-  <div class="container back_white mb-3">
-    <div class="rib_part mb-2">
-      <p class="rib_label">Etablissement</p>
-      <p>20041</p>
-    </div>
-    <div class="rib_part mb-2">
-      <p class="rib_label">GUICHET</p>
-      <p>01004</p>
-    </div>
-    <div class="rib_part mb-2">
-      <p class="rib_label">N° DE COMPTE</p>
-      <p>1277561S025</p>
-    </div>
-    <div class="rib_part mb-2">
-      <p class="rib_label">Clé RIB</p>
-      <p>21</p>
-    </div>
-    <div class="rib_part mb-2">
-      <p class="rib_label">Domiciliation</p>
-      <p>BNP PARIBAS</p>
-    </div>
-  </div>
+    <div class="rib-section">
+        <h2>Identifiant national (RIB)</h2>
 
-  <div class="container back_white mb-1">
-    <div class="rib_title">
-      <h3><img src="bnp.png" alt="logo" style="height: 24px; vertical-align: middle; margin-right: 8px;"> RIB - Identifiant international de compte</h3>
+        <div class="rib-line"><span>Établissement</span><p>20041</p></div>
+        <div class="rib-line"><span>Guichet</span><p>01004</p></div>
+        <div class="rib-line"><span>N° de compte</span><p>1277561S025</p></div>
+        <div class="rib-line"><span>Clé RIB</span><p>21</p></div>
+        <div class="rib-line"><span>Domiciliation</span><p>BNP PARIBAS</p></div>
     </div>
-  </div>
 
-  <div class="container back_white mb-3">
-    <div class="rib_part mb-2">
-      <p class="rib_label">IBAN</p>
-      <p id="iban">FR84 2004 1010 0412 7756 1S02 521 <button onclick="copyText('iban')">📋</button></p>
+    <div class="rib-section">
+        <h2>Identifiant international</h2>
+
+        <div class="rib-line"><span>IBAN</span><p id="iban">FR84 2004 1010 0412 7756 1S02 521</p></div>
+        <div class="rib-line"><span>BIC</span><p id="bic">PSSTFRPPDIJ</p></div>
     </div>
-    <div class="rib_part mb-2">
-      <p class="rib_label">BIC</p>
-      <p id="bic">PSSTFRPPDIJ <button onclick="copyText('bic')">📋</button></p>
+
+    <div class="rib-section">
+        <h2>Votre gestionnaire</h2>
+
+        <div class="rib-line"><span>Nom</span><p>Clément Dupont</p></div>
+        <div class="rib-line"><span>Téléphone</span><p>+33 6 05 70 84 65</p></div>
     </div>
-  </div>
 
-  <div class="title">
-    <h2><i class="fas fa-user-tie"></i> Votre gestionnaire</h2>
-  </div>
+    <button id="downloadBtn" class="btn-download">📄 Télécharger le RIB (PDF)</button>
 
-  <div class="container back_white mb-3">
-    <div class="rib_part">
-      <p class="rib_label">Nom</p>
-      <p>Clément Dupont</p>
-    </div>
-    <div class="rib_part">
-      <p class="rib_label">Téléphone</p>
-      <p><i class="fas fa-phone"></i> +33605708465</p>
-    </div>
-  </div>
-
-  <script src="footer.js"></script>
-
-  
- <div class="navigation_bar">
-  <div class="navigation">
-    <ul>
-      <li class="list active">
-        <a href="inter.html" target="_blank">
-          <ion-icon name="cash-outline"></ion-icon>
-          <span>Solde</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="histo.html" target="_blank">
-          <ion-icon name="time-outline"></ion-icon>
-          <span>Historique</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="vir.html" target="_blank">
-          <ion-icon name="swap-horizontal-outline"></ion-icon>
-          <span>Virement</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="cart.html" target="_blank">
-          <ion-icon name="card-outline"></ion-icon>
-          <span>Cartes</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="rib.html" target="_blank">
-          <ion-icon name="document-outline"></ion-icon>
-          <span>RIB</span>
-        </a>
-      </li>
-      <div class="indicator"></div>
-    </ul>
-  </div>
 </div>
   <script>
     const list = document.querySelectorAll(".list");
@@ -161,8 +87,81 @@
     indicator.style.left = `${index * 70}px`;
   });
 </script>
+<script>
+window.jsPDF = window.jspdf.jsPDF;
+
+document.getElementById("downloadBtn").addEventListener("click", function () {
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+    doc.setFont("Helvetica", "normal");
+
+    // Logo
+    let img = new Image();
+    img.src = "bnp.png";
+
+    img.onload = function () {
+
+        doc.addImage(img, "PNG", 40, 40, 90, 40);
+
+        doc.setFontSize(22);
+        doc.setTextColor(0, 158, 96);
+        doc.text("Relevé d'Identité Bancaire", 150, 60);
+
+        doc.setFontSize(12);
+        doc.setTextColor(0);
+
+        let y = 120;
+
+        function line(label, value) {
+            doc.setFont("Helvetica", "bold");
+            doc.text(label, 40, y);
+            doc.setFont("Helvetica", "normal");
+            doc.text(value, 250, y);
+            y += 28;
+        }
+
+        doc.setFontSize(16);
+        doc.setTextColor(0, 158, 96);
+        doc.text("Identifiant national (RIB)", 40, y); 
+        y += 30;
+
+        doc.setTextColor(0);
+
+        line("Établissement:", "20041");
+        line("Guichet:", "01004");
+        line("N° de compte:", "1277561S025");
+        line("Clé RIB:", "21");
+        line("Domiciliation:", "BNP PARIBAS");
+
+        y += 25;
+        doc.setFontSize(16);
+        doc.setTextColor(0, 158, 96);
+        doc.text("Identifiant international", 40, y);
+        y += 30;
+
+        doc.setTextColor(0);
+
+        line("IBAN:", document.getElementById("iban").innerText);
+        line("BIC:", document.getElementById("bic").innerText);
+
+        y += 25;
+        doc.setFontSize(16);
+        doc.setTextColor(0, 158, 96);
+        doc.text("Gestionnaire", 40, y);
+        y += 30;
+
+        doc.setTextColor(0);
+
+        line("Nom:", "Clément Dupont");
+        line("Téléphone:", "+33 6 05 70 84 65");
+
+        doc.save("RIB_BNP_Paribas.pdf");
+    };
+});
+</script>
 
 </body>
 </html>
-
 
