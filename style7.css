@@ -80,4 +80,84 @@ body {
         display: none;
     }
 }
+/* ------------------- Menu de navigation ------------------- */
+.navigation_bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    font-family: "Inter", sans-serif;
+}
+
+.navigation {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.navigation ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+.navigation ul li.list {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.navigation ul li.list a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #555;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+.navigation ul li.list a ion-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.navigation ul li.list.active a,
+.navigation ul li.list:hover a {
+    color: #009E60;
+}
+
+.navigation ul li.list.active a ion-icon,
+.navigation ul li.list:hover a ion-icon {
+    color: #009E60;
+}
+
+/* Indicateur animé */
+.navigation ul .indicator {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #009E60;
+    border-radius: 3px;
+    transition: left 0.3s ease;
+    left: 0;
+}
+
+/* Pour mobile et responsive */
+@media screen and (max-width: 768px) {
+    .navigation ul li.list a {
+        font-size: 10px;
+    }
+    .navigation ul .indicator {
+        width: 50px;
+    }
+}
 
