@@ -1,3 +1,102 @@
+/* ------------------- RIB BNP PARIBAS - Responsive ------------------- */
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Wrapper */
+.rib-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+/* Header */
+.rib-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.rib-header img {
+    height: 60px;
+    margin-right: 20px;
+}
+
+.rib-header-text h1 {
+    margin: 0;
+    font-size: 22px;
+    color: #009E60;
+}
+
+.rib-header-text p {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Sections */
+.rib-section {
+    margin-top: 30px;
+}
+
+.rib-section h2 {
+    border-left: 6px solid #009E60;
+    padding-left: 10px;
+    color: #009E60;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.rib-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+}
+
+.rib-line span {
+    font-weight: 600;
+    color: #333;
+    width: 150px;
+}
+
+.rib-line p {
+    margin: 0;
+    color: #000;
+    flex: 1;
+}
+
+/* Gestionnaire */
+.rib-section .rib-line span {
+    width: 150px;
+}
+
+/* Bouton Télécharger PDF */
+.btn-download {
+    margin-top: 40px;
+    background-color: #009E60;
+    color: #fff;
+    padding: 14px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: #007b4d;
+}
+
+/* Navigation bar */
 
 .navigation_bar {
   position: fixed;
@@ -43,5 +142,52 @@
   background: #008656;
   transition: 0.3s;
   transform: translateX(-50%);
+}
+
+/* ------------------- Responsive ------------------- */
+@media screen and (max-width: 768px) {
+    .rib-wrapper {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+    .rib-header img {
+        height: 50px;
+        margin-right: 10px;
+    }
+    .rib-header-text h1 {
+        font-size: 18px;
+    }
+    .rib-header-text p {
+        font-size: 12px;
+    }
+    .rib-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .rib-line span {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+    .btn-download {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+    }
+    .navigation ul li.list a {
+        font-size: 10px;
+    }
+    .navigation ul .indicator {
+        width: 50px;
+    }
+}
+
+/* Pour mobile et responsive */
+@media screen and (max-width: 768px) {
+    .navigation ul li.list a {
+        font-size: 10px;
+    }
+    .navigation ul .indicator {
+        width: 50px;
+    }
 }
 
