@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connexion Bancaire</title>
-  <link rel="stylesheet" href="style3.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BNP Paribas – Connexion</title>
+  <link rel="stylesheet" href="style3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <header>
-    <img src="bnp.png" alt="Logo BNP Paribas">
+
+  <header class="header">
+    <div class="header-container">
+      <img src="bnp.png" class="logo" alt="BNP Paribas">
+      <p class="slogan">La banque d’un monde qui change</p>
+    </div>
   </header>
-  <div class="container">
+
+  <section class="login-section">
+
     <div class="login-card">
-      <h1>Connexion</h1>
-      <p>Accédez à votre compte bancaire en toute sécurité</p>
+      <h1 class="title">Accéder à vos comptes</h1>
+      <p class="subtitle">Authentification sécurisée BNP Paribas</p>
+
       <form id="loginForm">
+
         <div class="input-group">
-          <label for="username">Nom d'utilisateur</label>
-          <input type="text" id="username" placeholder="ex : jean.dupont" required />
+          <label>Identifiant</label>
+          <div class="input-wrapper">
+            <span class="icon">👤</span>
+            <input type="text" id="username" placeholder="Votre identifiant" required>
+          </div>
         </div>
+
         <div class="input-group">
-          <label for="password">Mot de passe</label>
-          <input type="password" id="password" placeholder="••••••••" required />
+          <label>Mot de passe</label>
+          <div class="input-wrapper">
+            <span class="icon">🔒</span>
+            <input type="password" id="password" placeholder="Votre mot de passe" required>
+          </div>
         </div>
-        <button type="submit">Se connecter</button>
+
+        <button class="btn-login" type="submit">Se connecter</button>
+
       </form>
-      
-      <div class="footer">
+
+      <div class="options">
         <a href="#">Mot de passe oublié ?</a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <footer class="footer">
+    <p>© BNP Paribas – 2025. Tous droits réservés.</p>
+  </footer>
 
   <script src="index.js"></script>
+
 </body>
 </html>
+
+
