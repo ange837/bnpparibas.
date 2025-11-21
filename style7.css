@@ -81,63 +81,53 @@ body {
     }
 }
 /* ------------------- Menu de navigation ------------------- */
-.navigation_bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-    z-index: 1000;
-    font-family: "Inter", sans-serif;
-}
 
-.navigation {
-    max-width: 1000px;
-    margin: auto;
+.navigation_bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+  z-index: 100;
 }
 
 .navigation ul {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    margin: 0;
-    list-style: none;
-    position: relative;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
 }
 
-.navigation ul li.list {
-    flex: 1;
-    text-align: center;
-    position: relative;
+.navigation .list a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #666;
+  text-decoration: none;
+  font-size: 12px;
 }
 
-.navigation ul li.list a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: #555;
-    font-size: 12px;
-    transition: color 0.3s ease;
+.navigation .list.active a {
+  color: #008656;
+  font-weight: bold;
 }
 
-.navigation ul li.list a ion-icon {
-    font-size: 24px;
-    margin-bottom: 4px;
-    color: #555;
-    transition: color 0.3s ease;
+.navigation .list .icon {
+  font-size: 20px;
 }
 
-.navigation ul li.list.active a,
-.navigation ul li.list:hover a {
-    color: #009E60;
+.navigation .indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 20%;
+  height: 3px;
+  background: #008656;
+  transition: 0.3s;
+  transform: translateX(-50%);
 }
 
-.navigation ul li.list.active a ion-icon,
-.navigation ul li.list:hover a ion-icon {
-    color: #009E60;
-}
 
 /* Indicateur animé */
 .navigation ul .indicator {
@@ -149,15 +139,5 @@ body {
     border-radius: 3px;
     transition: left 0.3s ease;
     left: 0;
-}
-
-/* Pour mobile et responsive */
-@media screen and (max-width: 768px) {
-    .navigation ul li.list a {
-        font-size: 10px;
-    }
-    .navigation ul .indicator {
-        width: 50px;
-    }
 }
 
