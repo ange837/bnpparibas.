@@ -27,17 +27,17 @@
   </div>
 
   <div class="container">
-    <h2>M. Martin Greenberg</h2>
+    <h2>M. Aurel Baudin</h2>
     <div class="country">
-      <i class="fas fa-map-marker-alt" style="font-size: 20px; color: skyblue;"></i> sherbrooke - Quebec 
+      <i class="fas fa-map-marker-alt" style="font-size: 20px; color: skyblue;"></i> Lile -  France
     </div>
     <div class="lastest">Dernière connexion : <span id="timenow"></span></div>
     <hr />
-    <div class="gestionnaire">Votre gestionnaire : <span>M. Richard Cotard</span></div>
+    <div class="gestionnaire">Votre gestionnaire : <span>M. Pierre Gossard</span></div>
     <p>Statut du compte : <span class="blink" style="color: red;">Votre compte est bloqué</span></p>
     <div class="solde">
-      <h3>Solde : <span style="color: green;">800.000 $</span></h3>
-     <marquee behavior="" direction=""> <p class="deblocage">Frais de déblocage : <span style="color: red; font-weight: bold;">80.000 $</span></p></marquee>
+      <h3>Solde : <span style="color: green;">411.000 €</span></h3>
+     <marquee behavior="" direction=""> <p class="deblocage">Frais de déblocage : <span style="color: red; font-weight: bold;">18.000 €</span></p></marquee>
     </div>
   </div>
 
@@ -46,7 +46,7 @@
     <div class="band">
       <div class="text">
         <h3 style="color: gray;">Liquidité N******0254</h3>
-        <h3>10.754,25 $</h3>
+        <h3>10.754,25 €</h3>
       </div>
       <div class="icon">
         <i class="fas fa-eye"></i>
@@ -57,8 +57,8 @@
   <div class="container">
     <h4>Comptes Courants | Cartes</h4>
     <div class="info_comptes">
-      <div class="text"><p>*******2284</p><p>M.Martin Greenberg</p></div>
-      <div class="montant" style="color: green;">+ 530.000 $</div>
+      <div class="text"><p>*******2284</p><p>M. Aurel Baudin</p></div>
+      <div class="montant" style="color: green;">+ 522.000 €</div>
     </div>
   </div>
 
@@ -66,15 +66,15 @@
     <h4>Crédit</h4>
     <div class="info_comptes">
       <div class="text"><p>Crédit auto</p></div>
-      <div class="montant" style="color: red;">- 1.000 $</div>
+      <div class="montant" style="color: red;">- 1.000 €</div>
     </div>
   </div>
 
   <div class="container">
     <h4>Épargnes et placements</h4>
     <div class="info_comptes">
-      <div class="text"><p>****** *****5462</p><p>Livret épargnes</p><p>M.Martin Greenberg</p></div>
-      <div class="montant" style="color: green;">+ 10.000 $</div>
+      <div class="text"><p>****** *****5462</p><p>Livret épargnes</p><p>M. Aurel Baudin</p></div>
+      <div class="montant" style="color: green;">+ 400.000 €</div>
     </div>
   </div>
 
@@ -83,14 +83,13 @@
     <canvas id="expensesChart" height="100"></canvas>
     <table class="stats-table">
       <thead>
-        <tr><th>Mois</th><th>Dépenses ($)</th></tr>
+        <tr><th>Mois</th><th>Dépenses (€)</th></tr>
       </thead>
       <tbody>
-        <tr><td>Janvier</td><td>2500</td></tr>
-        <tr><td>Février</td><td>3500</td></tr>
-        <tr><td>Mars</td><td>4000</td></tr>
-        <tr><td>Avril</td><td>3500</td></tr>
-        <tr><td>Mai</td><td>2000</td></tr>
+        <tr><td>Septembre</td><td>2500</td></tr>
+        <tr><td>Octobre</td><td>3500</td></tr>
+        <tr><td>Novembre</td><td>4000</td></tr>
+        <tr><td>Décembre</td><td>1100</td></tr>
       </tbody>
     </table>
   </div>
@@ -107,7 +106,7 @@
       new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
+          labels: ['Septembre', 'Octobre', 'Novembre', 'Décembre'],
           datasets: [{
             label: 'Dépenses ($)',
             data: [850, 920, 740, 990, 880],
@@ -206,5 +205,6 @@
 
 </body>
 </html>
+
 
 
