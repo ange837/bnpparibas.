@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     const password = document.getElementById("password").value.trim();
   
     // Simulation : identifiants "admin" / "1234"
-    if (username === "Greenberg9" && password === "Ottawa22@") {
+    if (username === "Baudin09" && password === "Aurel22@") {
       window.location.href = "inter.html";
     } else {
       alert("Identifiants incorrects.");
@@ -23,6 +23,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   }, 1800);
 });
   
+
 
 
 
