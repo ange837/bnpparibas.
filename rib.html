@@ -1,159 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RIB BNP Paribas</title>
-  <link rel="stylesheet" href="style7.css">
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="style7.css"/>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
-
 <body>
 
 <div class="rib-wrapper">
 
-    <div class="rib-header">
-        <img src="bnp.png" alt="BNP Logo">
-        <div class="rib-header-text">
-            <h1>Relevé d'Identité Bancaire</h1>
-            <p>Document officiel — BNP Paribas</p>
-        </div>
+  <div class="rib-header">
+    <img src="bnp.png" alt="BNP Logo">
+    <div class="rib-header-text">
+      <h1>Relevé d'Identité Bancaire</h1>
+      <p>Document officiel — BNP Paribas</p>
     </div>
+  </div>
 
-    <div class="rib-section">
-        <h2>Identifiant national (RIB)</h2>
-        <div class="rib-line"><span>Établissement</span><p>20041</p></div>
-        <div class="rib-line"><span>Guichet</span><p>01004</p></div>
-        <div class="rib-line"><span>N° de compte</span><p>1277561S025</p></div>
-        <div class="rib-line"><span>Clé RIB</span><p>21</p></div>
-        <div class="rib-line"><span>Domiciliation</span><p>BNP PARIBAS</p></div>
-    </div>
+  <div class="rib-section">
+    <h2>Identifiant national (RIB)</h2>
+    <div class="rib-line"><span>Établissement</span><p>20041</p></div>
+    <div class="rib-line"><span>Guichet</span><p>01004</p></div>
+    <div class="rib-line"><span>N° de compte</span><p>1277561S025</p></div>
+    <div class="rib-line"><span>Clé RIB</span><p>21</p></div>
+    <div class="rib-line"><span>Domiciliation</span><p>BNP PARIBAS</p></div>
+  </div>
 
-    <div class="rib-section">
-        <h2>Identifiant international</h2>
-        <div class="rib-line"><span>IBAN</span><p id="iban">FR76 2823 3000 0190 2536 2327 489</p></div>
-        <div class="rib-line"><span>BIC</span><p id="bic">PSSTFRPPDIJ</p></div>
-    </div>
+  <div class="rib-section">
+    <h2>Identifiant international</h2>
+    <div class="rib-line"><span>IBAN</span><p id="iban">FR76 2823 3000 0190 2536 2327 489</p></div>
+    <div class="rib-line"><span>BIC</span><p id="bic">PSSTFRPPDIJ</p></div>
+  </div>
 
-    <div class="rib-section">
-        <h2>Votre gestionnaire</h2>
-        <div class="rib-line"><span>Nom</span><p>Pierre Gossard</p></div>
-        <div class="rib-line"><span>Téléphone</span><p>+33 7 56 93 70 13</p></div>
-    </div>
+  <div class="rib-section">
+    <h2>Votre gestionnaire</h2>
+    <div class="rib-line"><span>Nom</span><p>Pierre Gossard</p></div>
+    <div class="rib-line"><span>Téléphone</span><p>+33 7 56 93 70 13</p></div>
+  </div>
 
-    <button id="downloadBtn">Télécharger RIB</button>
 </div>
 
-<!-- Barre de navigation -->
+<!-- Barre de navigation uniforme -->
 <div class="navigation_bar">
   <div class="navigation">
     <ul>
-      <li class="list"><a href="inter.html"><ion-icon name="cash-outline"></ion-icon><span>Solde</span></a></li>
-      <li class="list"><a href="histo.html"><ion-icon name="time-outline"></ion-icon><span>Historique</span></a></li>
-      <li class="list"><a href="vir.html"><ion-icon name="swap-horizontal-outline"></ion-icon><span>Virement</span></a></li>
-      <li class="list"><a href="cart.html"><ion-icon name="card-outline"></ion-icon><span>Cartes</span></a></li>
-      <li class="list"><a href="rib.html"><ion-icon name="document-outline"></ion-icon><span>RIB</span></a></li>
+      <li class="list" data-page="inter.html"><a href="inter.html"><ion-icon name="cash-outline"></ion-icon><span>Solde</span></a></li>
+      <li class="list" data-page="histo.html"><a href="histo.html"><ion-icon name="time-outline"></ion-icon><span>Historique</span></a></li>
+      <li class="list" data-page="vir.html"><a href="vir.html"><ion-icon name="swap-horizontal-outline"></ion-icon><span>Virement</span></a></li>
+      <li class="list" data-page="cart.html"><a href="cart.html"><ion-icon name="card-outline"></ion-icon><span>Cartes</span></a></li>
+      <li class="list" data-page="rib.html"><a href="rib.html"><ion-icon name="document-outline"></ion-icon><span>RIB</span></a></li>
       <div class="indicator"></div>
     </ul>
   </div>
 </div>
 
-<!-- Script Navigation + PDF -->
 <script>
-  const navItems = document.querySelectorAll('.navigation .list');
-  const indicator = document.querySelector('.navigation .indicator');
+const navItems = document.querySelectorAll('.navigation .list');
+const indicator = document.querySelector('.navigation .indicator');
 
-  function updateActiveNav() {
-    const currentPage = window.location.pathname.split("/").pop(); // ex: "rib.html"
-    navItems.forEach(item => item.classList.remove('active'));
-
-    const activeItem = Array.from(navItems).find(item => {
-      const link = item.querySelector('a');
-      return link.getAttribute('href') === currentPage;
-    }) || navItems[0];
-
-    activeItem.classList.add('active');
-    indicator.style.left = `${activeItem.offsetLeft + (activeItem.offsetWidth - indicator.offsetWidth)/2}px`;
-  }
-
-  window.addEventListener('load', updateActiveNav);
-
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      indicator.style.left = `${item.offsetLeft + (item.offsetWidth - indicator.offsetWidth)/2}px`;
-    });
+function setActiveNav() {
+  const currentPage = location.pathname.split("/").pop();
+  navItems.forEach((item,index)=>{
+    if(item.dataset.page===currentPage){
+      item.classList.add('active');
+      indicator.style.left = `${index*70}px`;
+    } else {
+      item.classList.remove('active');
+    }
   });
+}
 
-  // Copier le texte
-  function copyText(id) {
-    const text = document.getElementById(id).textContent.trim();
-    const tempInput = document.createElement("input");
-    tempInput.value = text.replace("📋", "");
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-    alert("Copié dans le presse-papier : " + text);
-  }
-
-  // Téléchargement PDF
-  window.jsPDF = window.jspdf.jsPDF;
-  document.getElementById("downloadBtn").addEventListener("click", function () {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ unit: "pt", format: "a4" });
-    doc.setFont("Helvetica", "normal");
-
-    let img = new Image();
-    img.src = "bnp.png";
-    img.onload = function () {
-      doc.addImage(img, "PNG", 40, 40, 90, 40);
-      doc.setFontSize(22);
-      doc.setTextColor(0, 158, 96);
-      doc.text("Relevé d'Identité Bancaire", 150, 60);
-
-      let y = 120;
-      function line(label, value) {
-        doc.setFont("Helvetica", "bold");
-        doc.text(label, 40, y);
-        doc.setFont("Helvetica", "normal");
-        doc.text(value, 250, y);
-        y += 28;
-      }
-
-      doc.setFontSize(16);
-      doc.setTextColor(0, 158, 96);
-      doc.text("Identifiant national (RIB)", 40, y); 
-      y += 30;
-      doc.setTextColor(0);
-
-      line("Établissement:", "20041");
-      line("Guichet:", "01004");
-      line("N° de compte:", "1277561S025");
-      line("Clé RIB:", "21");
-      line("Domiciliation:", "BNP PARIBAS");
-
-      y += 25;
-      doc.setFontSize(16);
-      doc.setTextColor(0, 158, 96);
-      doc.text("Identifiant international", 40, y);
-      y += 30;
-      doc.setTextColor(0);
-      line("IBAN:", document.getElementById("iban").innerText);
-      line("BIC:", document.getElementById("bic").innerText);
-
-      y += 25;
-      doc.setFontSize(16);
-      doc.setTextColor(0, 158, 96);
-      doc.text("Gestionnaire", 40, y);
-      y += 30;
-      doc.setTextColor(0);
-      line("Nom:", "Pierre Gossard");
-      line("Téléphone:", "+33 7 56 93 70 13");
-
-      doc.save("RIB_BNP_Paribas.pdf");
-    };
+navItems.forEach(item=>{
+  item.addEventListener('click',()=>{
+    const index = Array.from(navItems).indexOf(item);
+    indicator.style.left = `${index*70}px`;
   });
+});
+
+window.addEventListener('load', setActiveNav);
 </script>
 
 </body>
