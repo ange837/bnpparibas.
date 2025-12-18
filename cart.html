@@ -7,6 +7,46 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="style5.css">
+
+  <!-- Styles barre navigation -->
+  <style>
+    .navigation_bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .navigation ul {
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .navigation .list {
+      position: relative;
+      text-align: center;
+      padding: 10px 0;
+      flex: 1;
+      cursor: pointer;
+    }
+    .navigation .list.active span {
+      color: #00966C;
+      font-weight: bold;
+    }
+    .navigation .indicator {
+      position: absolute;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background-color: #00966C;
+      transition: 0.3s ease;
+      left: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -133,74 +173,72 @@
   </div>
 
   <!-- Barre de navigation -->
- 
- <div class="navigation_bar">
-  <div class="navigation">
-    <ul>
-      <li class="list active">
-        <a href="inter.html" target="">
-          <ion-icon name="cash-outline"></ion-icon>
-          <span>Solde</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="histo.html" target="">
-          <ion-icon name="time-outline"></ion-icon>
-          <span>Historique</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="vir.html" target="">
-          <ion-icon name="swap-horizontal-outline"></ion-icon>
-          <span>Virement</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="cart.html">
-          <ion-icon name="card-outline"target=""></ion-icon>
-          <span>Cartes</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="rib.html" target="">
-          <ion-icon name="document-outline"></ion-icon>
-          <span>RIB</span>
-        </a>
-      </li>
-      <div class="indicator"></div>
-    </ul>
+  <div class="navigation_bar">
+    <div class="navigation">
+      <ul>
+        <li class="list">
+          <a href="inter.html">
+            <ion-icon name="cash-outline"></ion-icon>
+            <span>Solde</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="histo.html">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>Historique</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="vir.html">
+            <ion-icon name="swap-horizontal-outline"></ion-icon>
+            <span>Virement</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="cart.html">
+            <ion-icon name="card-outline"></ion-icon>
+            <span>Cartes</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="rib.html">
+            <ion-icon name="document-outline"></ion-icon>
+            <span>RIB</span>
+          </a>
+        </li>
+        <div class="indicator"></div>
+      </ul>
+    </div>
   </div>
-</div>
 
-  <!-- Ionicons -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Script pour barre verte dynamique -->
   <script>
-  const navItems = document.querySelectorAll('.navigation .list');
-  const indicator = document.querySelector('.navigation .indicator');
+    const navItems = document.querySelectorAll('.navigation .list');
+    const indicator = document.querySelector('.navigation .indicator');
 
-  navItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      navItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-      indicator.style.left = `${index * 70}px`;
+    function updateActiveNav() {
+      const currentPage = window.location.pathname.split("/").pop(); // ex: "cart.html"
+      navItems.forEach(item => item.classList.remove('active'));
+
+      const activeItem = Array.from(navItems).find(item => {
+        const link = item.querySelector('a');
+        return link.getAttribute('href') === currentPage;
+      }) || navItems[0];
+
+      activeItem.classList.add('active');
+
+      indicator.style.left = `${activeItem.offsetLeft + (activeItem.offsetWidth - indicator.offsetWidth)/2}px`;
+    }
+
+    window.addEventListener('load', updateActiveNav);
+
+    // Animation lors du clic
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        indicator.style.left = `${item.offsetLeft + (item.offsetWidth - indicator.offsetWidth)/2}px`;
+      });
     });
-  });
-
-  // Position de l'indicateur à l'ouverture
-  window.addEventListener('load', () => {
-    const active = document.querySelector('.navigation .list.active');
-    const index = Array.from(navItems).indexOf(active);
-    indicator.style.left = `${index * 70}px`;
-  });
-</script>
+  </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
