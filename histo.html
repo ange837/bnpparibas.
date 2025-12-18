@@ -1,171 +1,117 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Historique des opérations</title>
   <link rel="stylesheet" href="style4.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
 
-  <div class="welcome">
-    <h4>Mes opérations</h4>
-  </div>
+<div class="welcome"><h4>Mes opérations</h4></div>
+<div class="logout"><a href="index.html" title="Déconnexion"><ion-icon name="log-out-outline"></ion-icon></a></div>
 
-  <div class="logout">
-    <a href="index.html" title="Déconnexion">
-      <ion-icon name="log-out-outline"></ion-icon>
-    </a>
-  </div>
+<div class="container back_white mb-2"><h3>Historique des opérations</h3></div>
 
-  <div class="container back_white mb-2">
-    <h3>Historique des opérations</h3>
-  </div>
+<div class="container back_white mb-5">
+  <div class="historique_container">
 
-  <div class="container back_white mb-5">
-    <div class="historique_container">
-
-      <!-- Opération 1 -->
-      <div class="operation">
-        <div class="icon_operation">
-          <span class="material-icons">payments</span>
-        </div>
-        <div class="text_operation">
-          <p>Virement De Paul Millot</p>
-          <sub>FR01 5484 1994 1879 6952 9526</sub>
-          <sub>Date: 29/11/2024</sub>
-        </div>
-        <div class="montant_operation">
-          <div class="montant"><p>+ 3.860 €</p></div>
-          <div class="statut statut_success"><p>Effectué</p></div>
-        </div>
+    <!-- Opération 1 -->
+    <div class="operation">
+      <div class="icon_operation"><span class="material-symbols-outlined">payments</span></div>
+      <div class="text_operation">
+        <p>Virement De Paul Millot</p>
+        <sub>FR01 5484 1994 1879 6952 9526</sub>
+        <sub>Date: 29/11/2024</sub>
       </div>
-
-      <!-- Opération 2 -->
-      <div class="operation">
-        <div class="icon_operation">
-          <span class="material-icons">payments</span>
-        </div>
-        <div class="text_operation">
-          <p>Virement à Paul Millot</p>
-          <sub>FR01 5484 1994 1879 6952 9526</sub>
-          <sub>Date: 29/11/2024</sub>
-        </div>
-        <div class="montant_operation">
-          <div class="montant"><p>- 10.000 €</p></div>
-          <div class="statut statut_error"><p>Refusé</p></div>
-        </div>
+      <div class="montant_operation">
+        <div class="montant"><p>+ 3.860 €</p></div>
+        <div class="statut statut_success"><p>Effectuer</p></div>
       </div>
-
-      <!-- Opération 3 -->
-      <div class="operation">
-        <div class="icon_operation">
-          <span class="material-icons">shopping_cart</span>
-        </div>
-        <div class="text_operation">
-          <p>Abonnement NETFLIX</p>
-          <sub>Plan premium</sub>
-          <sub>Date: 02/11/2025</sub>
-        </div>
-        <div class="montant_operation">
-          <div class="montant"><p>- 7.99 €</p></div>
-          <div class="statut statut_success"><p>Effectué</p></div>
-        </div>
-      </div>
-
-      <!-- Opération 4 -->
-      <div class="operation">
-        <div class="icon_operation">
-          <span class="material-icons">credit_card</span>
-        </div>
-        <div class="text_operation">
-          <p>CB AIR FRANCE</p>
-          <sub>**** **** **** **** 5874</sub>
-          <sub>Date: 11/09/2025</sub>
-        </div>
-        <div class="montant_operation">
-          <div class="montant"><p>- 2 640.00 €</p></div>
-          <div class="statut statut_success"><p>Effectué</p></div>
-        </div>
-      </div>
-
     </div>
-  </div>
 
-  <div class="title">
-    <h2>Votre gestionnaire</h2>
-  </div>
-
-  <!-- Navigation dynamique -->
-  <div class="navigation_bar">
-    <div class="navigation">
-      <ul>
-        <li class="list">
-          <a href="inter.html">
-            <ion-icon name="cash-outline"></ion-icon>
-            <span>Solde</span>
-          </a>
-        </li>
-        <li class="list active">
-          <a href="histo.html">
-            <ion-icon name="time-outline"></ion-icon>
-            <span>Historique</span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="vir.html">
-            <ion-icon name="swap-horizontal-outline"></ion-icon>
-            <span>Virement</span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="cart.html">
-            <ion-icon name="card-outline"></ion-icon>
-            <span>Cartes</span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="rib.html">
-            <ion-icon name="document-outline"></ion-icon>
-            <span>RIB</span>
-          </a>
-        </li>
-        <div class="indicator"></div>
-      </ul>
+    <!-- Opération 2 -->
+    <div class="operation">
+      <div class="icon_operation"><span class="material-symbols-outlined">payments</span></div>
+      <div class="text_operation">
+        <p>Virement à Paul Millot</p>
+        <sub>FR01 5484 1994 1879 6952 9526</sub>
+        <sub>Date: 29/11/2024</sub>
+      </div>
+      <div class="montant_operation">
+        <div class="montant"><p>- 10.000 €</p></div>
+        <div class="statut statut_error"><p>Refusé</p></div>
+      </div>
     </div>
+
+    <!-- Opération 3 -->
+    <div class="operation">
+      <div class="icon_operation"><span class="material-symbols-outlined">shopping_cart</span></div>
+      <div class="text_operation">
+        <p>Abonnement NETFLIX</p>
+        <sub>Plan premium</sub>
+        <sub>Date: 2/11/2025</sub>
+      </div>
+      <div class="montant_operation">
+        <div class="montant"><p>- 7.99 €</p></div>
+        <div class="statut statut_success"><p>Effectuer</p></div>
+      </div>
+    </div>
+
+    <!-- Opération 4 -->
+    <div class="operation">
+      <div class="icon_operation"><span class="material-symbols-outlined">credit_card</span></div>
+      <div class="text_operation">
+        <p>CB AIR FRANCE</p>
+        <sub>**** **** **** **** 5874</sub>
+        <sub>Date: 11/09/2025</sub>
+      </div>
+      <div class="montant_operation">
+        <div class="montant"><p>- 2 640.00 €</p></div>
+        <div class="statut statut_success"><p>Effectuer</p></div>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <!-- Script pour navigation active et indicateur -->
-  <script>
-    const navItems = document.querySelectorAll('.navigation .list');
-    const indicator = document.querySelector('.navigation .indicator');
+<div class="title"><h2>Votre gestionnaire</h2></div>
 
-    function updateIndicator(item) {
-      navItems.forEach(i => i.classList.remove('active'));
+<!-- Barre de navigation uniforme -->
+<div class="navigation_bar">
+  <div class="navigation">
+    <ul>
+      <li class="list" data-page="inter.html"><a href="inter.html"><ion-icon name="cash-outline"></ion-icon><span>Solde</span></a></li>
+      <li class="list" data-page="histo.html"><a href="histo.html"><ion-icon name="time-outline"></ion-icon><span>Historique</span></a></li>
+      <li class="list" data-page="vir.html"><a href="vir.html"><ion-icon name="swap-horizontal-outline"></ion-icon><span>Virement</span></a></li>
+      <li class="list" data-page="cart.html"><a href="cart.html"><ion-icon name="card-outline"></ion-icon><span>Cartes</span></a></li>
+      <li class="list" data-page="rib.html"><a href="rib.html"><ion-icon name="document-outline"></ion-icon><span>RIB</span></a></li>
+      <div class="indicator"></div>
+    </ul>
+  </div>
+</div>
+
+<script>
+const navItems = document.querySelectorAll('.navigation .list');
+const indicator = document.querySelector('.navigation .indicator');
+
+function setActiveNav() {
+  const currentPage = location.pathname.split("/").pop();
+  navItems.forEach((item,index)=>{
+    if(item.dataset.page === currentPage){
       item.classList.add('active');
-      const index = Array.from(navItems).indexOf(item);
-      indicator.style.left = `${index * 70}px`;
-    }
-
-    navItems.forEach(item => {
-      item.addEventListener('click', e => {
-        e.preventDefault(); // si tu veux rester sur la page, sinon supprimer
-        updateIndicator(item);
-        window.location.href = item.querySelector('a').href;
-      });
-    });
-
-    window.addEventListener('load', () => {
-      const active = document.querySelector('.navigation .list.active');
-      const index = Array.from(navItems).indexOf(active);
-      indicator.style.left = `${index * 70}px`;
-    });
-  </script>
+      indicator.style.left = `${index*70}px`;
+    } else {item.classList.remove('active');}
+  });
+}
+navItems.forEach(item=>{
+  item.addEventListener('click',()=>{const index=Array.from(navItems).indexOf(item);indicator.style.left=`${index*70}px`;});
+});
+window.addEventListener('load',setActiveNav);
+</script>
 
 </body>
 </html>
