@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RIB BNP Paribas</title>
   <link rel="stylesheet" href="style7.css">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
@@ -21,7 +23,6 @@
 
     <div class="rib-section">
         <h2>Identifiant national (RIB)</h2>
-
         <div class="rib-line"><span>Établissement</span><p>20041</p></div>
         <div class="rib-line"><span>Guichet</span><p>01004</p></div>
         <div class="rib-line"><span>N° de compte</span><p>1277561S025</p></div>
@@ -31,175 +32,129 @@
 
     <div class="rib-section">
         <h2>Identifiant international</h2>
-
         <div class="rib-line"><span>IBAN</span><p id="iban">FR76 2823 3000 0190 2536 2327 489</p></div>
         <div class="rib-line"><span>BIC</span><p id="bic">PSSTFRPPDIJ</p></div>
     </div>
 
     <div class="rib-section">
         <h2>Votre gestionnaire</h2>
-
         <div class="rib-line"><span>Nom</span><p>Pierre Gossard</p></div>
         <div class="rib-line"><span>Téléphone</span><p>+33 7 56 93 70 13</p></div>
     </div>
 
+    <button id="downloadBtn">Télécharger RIB</button>
 </div>
-  
- <div class="navigation_bar">
+
+<!-- Barre de navigation -->
+<div class="navigation_bar">
   <div class="navigation">
     <ul>
-      <li class="list active">
-        <a href="inter.html" target="">
-          <ion-icon name="cash-outline"></ion-icon>
-          <span>Solde</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="histo.html" target="">
-          <ion-icon name="time-outline"></ion-icon>
-          <span>Historique</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="vir.html" target="">
-          <ion-icon name="swap-horizontal-outline"></ion-icon>
-          <span>Virement</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="cart.html">
-          <ion-icon name="card-outline"target=""></ion-icon>
-          <span>Cartes</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="rib.html" target="">
-          <ion-icon name="document-outline"></ion-icon>
-          <span>RIB</span>
-        </a>
-      </li>
+      <li class="list"><a href="inter.html"><ion-icon name="cash-outline"></ion-icon><span>Solde</span></a></li>
+      <li class="list"><a href="histo.html"><ion-icon name="time-outline"></ion-icon><span>Historique</span></a></li>
+      <li class="list"><a href="vir.html"><ion-icon name="swap-horizontal-outline"></ion-icon><span>Virement</span></a></li>
+      <li class="list"><a href="cart.html"><ion-icon name="card-outline"></ion-icon><span>Cartes</span></a></li>
+      <li class="list"><a href="rib.html"><ion-icon name="document-outline"></ion-icon><span>RIB</span></a></li>
       <div class="indicator"></div>
     </ul>
   </div>
 </div>
-  <script>
-    const list = document.querySelectorAll(".list");
-    function activeLink() {
-      list.forEach((item) => item.classList.remove("active"));
-      this.classList.add("active");
-    }
-    list.forEach((item) => item.addEventListener("click", activeLink));
 
-    function copyText(id) {
-      const text = document.getElementById(id).textContent.trim();
-      const tempInput = document.createElement("input");
-      tempInput.value = text.replace("📋", "");
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand("copy");
-      document.body.removeChild(tempInput);
-      alert("Copié dans le presse-papier : " + text);
-    }
-  </script>
-
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script>
+<!-- Script Navigation + PDF -->
+<script>
   const navItems = document.querySelectorAll('.navigation .list');
   const indicator = document.querySelector('.navigation .indicator');
 
-  navItems.forEach((item, index) => {
+  function updateActiveNav() {
+    const currentPage = window.location.pathname.split("/").pop(); // ex: "rib.html"
+    navItems.forEach(item => item.classList.remove('active'));
+
+    const activeItem = Array.from(navItems).find(item => {
+      const link = item.querySelector('a');
+      return link.getAttribute('href') === currentPage;
+    }) || navItems[0];
+
+    activeItem.classList.add('active');
+    indicator.style.left = `${activeItem.offsetLeft + (activeItem.offsetWidth - indicator.offsetWidth)/2}px`;
+  }
+
+  window.addEventListener('load', updateActiveNav);
+
+  navItems.forEach(item => {
     item.addEventListener('click', () => {
-      navItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-      indicator.style.left = `${index * 70}px`;
+      indicator.style.left = `${item.offsetLeft + (item.offsetWidth - indicator.offsetWidth)/2}px`;
     });
   });
 
-  // Position de l'indicateur à l'ouverture
-  window.addEventListener('load', () => {
-    const active = document.querySelector('.navigation .list.active');
-    const index = Array.from(navItems).indexOf(active);
-    indicator.style.left = `${index * 70}px`;
-  });
-</script>
-<script>
-window.jsPDF = window.jspdf.jsPDF;
+  // Copier le texte
+  function copyText(id) {
+    const text = document.getElementById(id).textContent.trim();
+    const tempInput = document.createElement("input");
+    tempInput.value = text.replace("📋", "");
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Copié dans le presse-papier : " + text);
+  }
 
-document.getElementById("downloadBtn").addEventListener("click", function () {
-
+  // Téléchargement PDF
+  window.jsPDF = window.jspdf.jsPDF;
+  document.getElementById("downloadBtn").addEventListener("click", function () {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "pt", format: "a4" });
-
     doc.setFont("Helvetica", "normal");
 
-    // Logo
     let img = new Image();
     img.src = "bnp.png";
-
     img.onload = function () {
+      doc.addImage(img, "PNG", 40, 40, 90, 40);
+      doc.setFontSize(22);
+      doc.setTextColor(0, 158, 96);
+      doc.text("Relevé d'Identité Bancaire", 150, 60);
 
-        doc.addImage(img, "PNG", 40, 40, 90, 40);
+      let y = 120;
+      function line(label, value) {
+        doc.setFont("Helvetica", "bold");
+        doc.text(label, 40, y);
+        doc.setFont("Helvetica", "normal");
+        doc.text(value, 250, y);
+        y += 28;
+      }
 
-        doc.setFontSize(22);
-        doc.setTextColor(0, 158, 96);
-        doc.text("Relevé d'Identité Bancaire", 150, 60);
+      doc.setFontSize(16);
+      doc.setTextColor(0, 158, 96);
+      doc.text("Identifiant national (RIB)", 40, y); 
+      y += 30;
+      doc.setTextColor(0);
 
-        doc.setFontSize(12);
-        doc.setTextColor(0);
+      line("Établissement:", "20041");
+      line("Guichet:", "01004");
+      line("N° de compte:", "1277561S025");
+      line("Clé RIB:", "21");
+      line("Domiciliation:", "BNP PARIBAS");
 
-        let y = 120;
+      y += 25;
+      doc.setFontSize(16);
+      doc.setTextColor(0, 158, 96);
+      doc.text("Identifiant international", 40, y);
+      y += 30;
+      doc.setTextColor(0);
+      line("IBAN:", document.getElementById("iban").innerText);
+      line("BIC:", document.getElementById("bic").innerText);
 
-        function line(label, value) {
-            doc.setFont("Helvetica", "bold");
-            doc.text(label, 40, y);
-            doc.setFont("Helvetica", "normal");
-            doc.text(value, 250, y);
-            y += 28;
-        }
+      y += 25;
+      doc.setFontSize(16);
+      doc.setTextColor(0, 158, 96);
+      doc.text("Gestionnaire", 40, y);
+      y += 30;
+      doc.setTextColor(0);
+      line("Nom:", "Pierre Gossard");
+      line("Téléphone:", "+33 7 56 93 70 13");
 
-        doc.setFontSize(16);
-        doc.setTextColor(0, 158, 96);
-        doc.text("Identifiant national (RIB)", 40, y); 
-        y += 30;
-
-        doc.setTextColor(0);
-
-        line("Établissement:", "20041");
-        line("Guichet:", "01004");
-        line("N° de compte:", "1277561S025");
-        line("Clé RIB:", "21");
-        line("Domiciliation:", "BNP PARIBAS");
-
-        y += 25;
-        doc.setFontSize(16);
-        doc.setTextColor(0, 158, 96);
-        doc.text("Identifiant international", 40, y);
-        y += 30;
-
-        doc.setTextColor(0);
-
-        line("IBAN:", document.getElementById("iban").innerText);
-        line("BIC:", document.getElementById("bic").innerText);
-
-        y += 25;
-        doc.setFontSize(16);
-        doc.setTextColor(0, 158, 96);
-        doc.text("Gestionnaire", 40, y);
-        y += 30;
-
-        doc.setTextColor(0);
-
-        line("Nom:", "Clément Dupont");
-        line("Téléphone:", "+33 6 05 70 84 65");
-
-        doc.save("RIB_BNP_Paribas.pdf");
+      doc.save("RIB_BNP_Paribas.pdf");
     };
-});
+  });
 </script>
 
 </body>
 </html>
-
-
-
