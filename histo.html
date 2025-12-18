@@ -1,53 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Historique des opérations</title>
   <link rel="stylesheet" href="style4.css">
-  <!-- Ionicons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-  <style>
-    /* Styles pour la navigation */
-    .navigation_bar {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-    .navigation ul {
-      display: flex;
-      justify-content: space-around;
-      position: relative;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .navigation .list {
-      position: relative;
-      text-align: center;
-      padding: 10px 0;
-      flex: 1;
-      cursor: pointer;
-    }
-    .navigation .list.active span {
-      color: #00966C;
-      font-weight: bold;
-    }
-    .navigation .indicator {
-      position: absolute;
-      bottom: 0;
-      width: 50px;
-      height: 3px;
-      background-color: #00966C;
-      transition: 0.3s ease;
-      left: 0;
-    }
-  </style>
 </head>
 <body>
 
@@ -60,17 +22,18 @@
       <ion-icon name="log-out-outline"></ion-icon>
     </a>
   </div>
-  
+
   <div class="container back_white mb-2">
     <h3>Historique des opérations</h3>
   </div>
 
   <div class="container back_white mb-5">
     <div class="historique_container">
-      <!-- Opérations (exemple) -->
+
+      <!-- Opération 1 -->
       <div class="operation">
         <div class="icon_operation">
-          <span class="material-symbols-outlined">payments</span>
+          <span class="material-icons">payments</span>
         </div>
         <div class="text_operation">
           <p>Virement De Paul Millot</p>
@@ -79,10 +42,58 @@
         </div>
         <div class="montant_operation">
           <div class="montant"><p>+ 3.860 €</p></div>
-          <div class="statut statut_success"><p>Effectuer</p></div>
+          <div class="statut statut_success"><p>Effectué</p></div>
         </div>
       </div>
-      <!-- Autres opérations ... -->
+
+      <!-- Opération 2 -->
+      <div class="operation">
+        <div class="icon_operation">
+          <span class="material-icons">payments</span>
+        </div>
+        <div class="text_operation">
+          <p>Virement à Paul Millot</p>
+          <sub>FR01 5484 1994 1879 6952 9526</sub>
+          <sub>Date: 29/11/2024</sub>
+        </div>
+        <div class="montant_operation">
+          <div class="montant"><p>- 10.000 €</p></div>
+          <div class="statut statut_error"><p>Refusé</p></div>
+        </div>
+      </div>
+
+      <!-- Opération 3 -->
+      <div class="operation">
+        <div class="icon_operation">
+          <span class="material-icons">shopping_cart</span>
+        </div>
+        <div class="text_operation">
+          <p>Abonnement NETFLIX</p>
+          <sub>Plan premium</sub>
+          <sub>Date: 02/11/2025</sub>
+        </div>
+        <div class="montant_operation">
+          <div class="montant"><p>- 7.99 €</p></div>
+          <div class="statut statut_success"><p>Effectué</p></div>
+        </div>
+      </div>
+
+      <!-- Opération 4 -->
+      <div class="operation">
+        <div class="icon_operation">
+          <span class="material-icons">credit_card</span>
+        </div>
+        <div class="text_operation">
+          <p>CB AIR FRANCE</p>
+          <sub>**** **** **** **** 5874</sub>
+          <sub>Date: 11/09/2025</sub>
+        </div>
+        <div class="montant_operation">
+          <div class="montant"><p>- 2 640.00 €</p></div>
+          <div class="statut statut_success"><p>Effectué</p></div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -90,7 +101,7 @@
     <h2>Votre gestionnaire</h2>
   </div>
 
-  <!-- Barre de navigation -->
+  <!-- Navigation dynamique -->
   <div class="navigation_bar">
     <div class="navigation">
       <ul>
@@ -100,7 +111,7 @@
             <span>Solde</span>
           </a>
         </li>
-        <li class="list">
+        <li class="list active">
           <a href="histo.html">
             <ion-icon name="time-outline"></ion-icon>
             <span>Historique</span>
@@ -129,33 +140,30 @@
     </div>
   </div>
 
-  <!-- Script pour activer la barre verte dynamiquement -->
+  <!-- Script pour navigation active et indicateur -->
   <script>
     const navItems = document.querySelectorAll('.navigation .list');
     const indicator = document.querySelector('.navigation .indicator');
 
-    function updateActiveNav() {
-      const currentPage = window.location.pathname.split("/").pop(); // ex: "histo.html"
-      navItems.forEach(item => item.classList.remove('active'));
-
-      const activeItem = Array.from(navItems).find(item => {
-        const link = item.querySelector('a');
-        return link.getAttribute('href') === currentPage;
-      }) || navItems[0]; // fallback si aucune correspondance
-
-      activeItem.classList.add('active');
-
-      // Centre l'indicateur sous l'onglet actif
-      indicator.style.left = `${activeItem.offsetLeft + (activeItem.offsetWidth - indicator.offsetWidth)/2}px`;
+    function updateIndicator(item) {
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      const index = Array.from(navItems).indexOf(item);
+      indicator.style.left = `${index * 70}px`;
     }
 
-    window.addEventListener('load', updateActiveNav);
-
-    // Optionnel : animation de l'indicateur lors du clic
     navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        indicator.style.left = `${item.offsetLeft + (item.offsetWidth - indicator.offsetWidth)/2}px`;
+      item.addEventListener('click', e => {
+        e.preventDefault(); // si tu veux rester sur la page, sinon supprimer
+        updateIndicator(item);
+        window.location.href = item.querySelector('a').href;
       });
+    });
+
+    window.addEventListener('load', () => {
+      const active = document.querySelector('.navigation .list.active');
+      const index = Array.from(navItems).indexOf(active);
+      indicator.style.left = `${index * 70}px`;
     });
   </script>
 
