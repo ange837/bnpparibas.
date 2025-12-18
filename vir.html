@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Virement Bancaire</title>
+  <link rel="stylesheet" href="style6.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
-  <link rel="stylesheet" href="style6.css">
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
 
@@ -22,12 +22,7 @@
 
 <div class="container back_white footer">
   <div class="gest_pic">
-    <lord-icon
-      src="https://cdn.lordicon.com/pimvysaa.json"
-      trigger="loop"
-      colors="outline:#eeca66,primary:#b26836,secondary:#ffc738"
-      style="width: 60px; height: 60px">
-    </lord-icon>
+    <lord-icon src="https://cdn.lordicon.com/pimvysaa.json" trigger="loop" colors="outline:#eeca66,primary:#b26836,secondary:#ffc738" style="width:60px;height:60px"></lord-icon>
   </div>
   <div class="text_footer">
     <h5>Prélèvement: Compte courants</h5>
@@ -36,55 +31,31 @@
 </div>
 
 <div class="container back_white transfert">
-  <div class="title_virement">
-    <h1>Informations du bénéficiaire</h1>
-  </div>
-
-  <!-- Formulaire -->
-  <div class="inputBox">
-    <input type="text" class="input_field" data-type="text" onkeyup="validateField(this)" placeholder=" " required>
-    <span>NOM</span>
-    <small class="error"></small>
-  </div>
+  <div class="title_virement"><h1>Informations du bénéficiaire</h1></div>
 
   <div class="inputBox">
-    <input type="text" class="input_field" data-type="text" onkeyup="validateField(this)" placeholder=" " required>
-    <span>PRÉNOM</span>
-    <small class="error"></small>
+    <input type="text" class="input_field" data-type="text" placeholder=" " onkeyup="validateField(this)"><span>NOM</span><small class="error"></small>
   </div>
-
   <div class="inputBox">
-    <input type="text" class="input_field" data-type="iban" onkeyup="validateField(this)" placeholder=" " required>
-    <span>IBAN</span>
-    <small class="error"></small>
+    <input type="text" class="input_field" data-type="text" placeholder=" " onkeyup="validateField(this)"><span>PRÉNOM</span><small class="error"></small>
   </div>
-
   <div class="inputBox">
-    <input type="text" class="input_field" data-type="swift" onkeyup="validateField(this)" placeholder=" " required>
-    <span>CODE SWIFT</span>
-    <small class="error"></small>
+    <input type="text" class="input_field" data-type="iban" placeholder=" " onkeyup="validateField(this)"><span>IBAN</span><small class="error"></small>
   </div>
-
   <div class="inputBox">
-    <input type="text" class="input_field" data-type="swift" onkeyup="validateField(this)" placeholder=" " required>
-    <span>CODE BIC</span>
-    <small class="error"></small>
+    <input type="text" class="input_field" data-type="swift" placeholder=" " onkeyup="validateField(this)"><span>CODE SWIFT</span><small class="error"></small>
   </div>
-
   <div class="inputBox">
-    <input type="text" class="input_field" data-type="amount" onkeyup="validateField(this)" placeholder=" " required>
-    <span>MONTANT</span>
-    <small class="error"></small>
+    <input type="text" class="input_field" data-type="swift" placeholder=" " onkeyup="validateField(this)"><span>CODE BIC</span><small class="error"></small>
   </div>
-
   <div class="inputBox">
-    <input type="text" class="input_field" data-type="text" onkeyup="validateField(this)" placeholder=" " required>
-    <span>LIBELLÉ</span>
-    <small class="error"></small>
+    <input type="text" class="input_field" data-type="amount" placeholder=" " onkeyup="validateField(this)"><span>MONTANT</span><small class="error"></small>
+  </div>
+  <div class="inputBox">
+    <input type="text" class="input_field" data-type="text" placeholder=" " onkeyup="validateField(this)"><span>LIBELLÉ</span><small class="error"></small>
   </div>
 
   <div class="loader" id="loader"></div>
-
   <div class="button">
     <button id="btn_valid" disabled onclick="virement_loading()" class="btn_valid">VALIDER</button>
   </div>
@@ -92,133 +63,43 @@
 
 <div class="title"><h2>Votre gestionnaire</h2></div>
 
-<!-- Barre de navigation -->
+<div id="alert_blocked">⚠️ Votre compte est temporairement bloqué.<br><br>Veuillez contacter votre gestionnaire pour débloquer la situation.</div>
+
+<!-- Barre de navigation uniforme -->
 <div class="navigation_bar">
   <div class="navigation">
     <ul>
-      <li class="list"><a href="inter.html"><ion-icon name="cash-outline"></ion-icon><span>Solde</span></a></li>
-      <li class="list"><a href="histo.html"><ion-icon name="time-outline"></ion-icon><span>Historique</span></a></li>
-      <li class="list"><a href="vir.html"><ion-icon name="swap-horizontal-outline"></ion-icon><span>Virement</span></a></li>
-      <li class="list"><a href="cart.html"><ion-icon name="card-outline"></ion-icon><span>Cartes</span></a></li>
-      <li class="list"><a href="rib.html"><ion-icon name="document-outline"></ion-icon><span>RIB</span></a></li>
+      <li class="list" data-page="inter.html"><a href="inter.html"><ion-icon name="cash-outline"></ion-icon><span>Solde</span></a></li>
+      <li class="list" data-page="histo.html"><a href="histo.html"><ion-icon name="time-outline"></ion-icon><span>Historique</span></a></li>
+      <li class="list" data-page="vir.html"><a href="vir.html"><ion-icon name="swap-horizontal-outline"></ion-icon><span>Virement</span></a></li>
+      <li class="list" data-page="cart.html"><a href="cart.html"><ion-icon name="card-outline"></ion-icon><span>Cartes</span></a></li>
+      <li class="list" data-page="rib.html"><a href="rib.html"><ion-icon name="document-outline"></ion-icon><span>RIB</span></a></li>
       <div class="indicator"></div>
     </ul>
   </div>
 </div>
 
-<!-- Scripts -->
 <script>
-  // Navigation
-  const navItems = document.querySelectorAll('.navigation .list');
-  const indicator = document.querySelector('.navigation .indicator');
+const navItems=document.querySelectorAll('.navigation .list');
+const indicator=document.querySelector('.navigation .indicator');
 
-  function updateActiveNav() {
-    const currentPage = window.location.pathname.split("/").pop();
-    navItems.forEach(item => item.classList.remove('active'));
-    const activeItem = Array.from(navItems).find(item => item.querySelector('a').getAttribute('href') === currentPage) || navItems[0];
-    activeItem.classList.add('active');
-    indicator.style.left = `${activeItem.offsetLeft + (activeItem.offsetWidth - indicator.offsetWidth)/2}px`;
-  }
-
-  window.addEventListener('load', updateActiveNav);
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      indicator.style.left = `${item.offsetLeft + (item.offsetWidth - indicator.offsetWidth)/2}px`;
-    });
+function setActiveNav(){
+  const currentPage=location.pathname.split("/").pop();
+  navItems.forEach((item,index)=>{
+    if(item.dataset.page===currentPage){item.classList.add('active');indicator.style.left=`${index*70}px`;}
+    else{item.classList.remove('active');}
   });
+}
+navItems.forEach(item=>{item.addEventListener('click',()=>{const index=Array.from(navItems).indexOf(item);indicator.style.left=`${index*70}px`;});});
+window.addEventListener('load',setActiveNav);
 
-  // Formulaire
-  function formatIBAN(input) {
-    let value = input.value.replace(/\s+/g, "").toUpperCase();
-    value = value.replace(/(.{4})/g, "$1 ").trim();
-    input.value = value;
-  }
-
-  function formatAmount(input) {
-    let value = input.value.replace(/[^0-9,.]/g, "");
-    value = value.replace(",", "."); 
-    if (!isNaN(value) && value !== "") {
-      value = parseFloat(value).toLocaleString("fr-FR", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
-    }
-    input.value = value;
-  }
-
-  function validateField(input) {
-    const type = input.dataset.type;
-    const rawValue = input.value.trim().replace(/\s+/g, "");
-    const error = input.parentElement.querySelector(".error");
-
-    let valid = false;
-    let message = "";
-
-    if (type === "iban") formatIBAN(input);
-    if (type === "amount") formatAmount(input);
-
-    switch (type) {
-      case "text":
-        valid = /^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]{2,}$/.test(rawValue);
-        message = valid ? "" : "Champ invalide";
-        break;
-      case "iban":
-        valid = /^[A-Z0-9]{15,34}$/i.test(rawValue);
-        message = valid ? "" : "IBAN incorrect";
-        break;
-      case "swift":
-        valid = /^[A-Z0-9]{8,11}$/i.test(rawValue);
-        message = valid ? "" : "Code SWIFT/BIC invalide";
-        break;
-      case "amount":
-        valid = /^[0-9]+(\.[0-9]{1,2})?$/.test(rawValue.replace(",", "."));
-        message = valid ? "" : "Montant incorrect";
-        break;
-    }
-
-    if (!valid) {
-      input.classList.add("input_invalid");
-      input.classList.remove("input_valid");
-      error.textContent = message;
-    } else {
-      input.classList.remove("input_invalid");
-      input.classList.add("input_valid");
-      error.textContent = "";
-    }
-
-    checkForm();
-  }
-
-  function checkForm() {
-    const inputs = document.querySelectorAll(".input_field");
-    const btn = document.getElementById("btn_valid");
-    const allValid = Array.from(inputs).every(el => el.classList.contains("input_valid"));
-    btn.disabled = !allValid;
-    btn.style.backgroundColor = allValid ? "slateblue" : "rgb(211, 209, 230)";
-  }
-
-  function virement_loading() {
-    const btn = document.getElementById("btn_valid");
-    const loader = document.getElementById("loader");
-    btn.style.display = "none";
-    loader.style.display = "block";
-    setTimeout(() => {
-      showAccountBlockedMessage();
-      loader.style.display = "none";
-      btn.style.display = "block";
-    }, 2000);
-  }
-
-  function showAccountBlockedMessage() {
-    const alertBox = document.getElementById("alert_blocked");
-    if(alertBox) alertBox.style.display = "flex";
-  }
+// Validation du formulaire
+function formatIBAN(input){input.value=input.value.replace(/\s+/g,"").toUpperCase().replace(/(.{4})/g,"$1 ").trim();}
+function formatAmount(input){let value=input.value.replace(/[^0-9,.]/g,"").replace(",",".");if(!isNaN(value)&&value!==""){value=parseFloat(value).toLocaleString("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2});}input.value=value;}
+function validateField(input){const type=input.dataset.type;const rawValue=input.value.trim().replace(/\s+/g,"");const error=input.parentElement.querySelector(".error");let valid=false;let message="";if(type==="iban")formatIBAN(input);if(type==="amount")formatAmount(input);switch(type){case"text":valid=/^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]{2,}$/.test(rawValue);message=valid?"":"Champ invalide";break;case"iban":valid=/^[A-Z0-9]{15,34}$/i.test(rawValue);message=valid?"":"IBAN incorrect";break;case"swift":valid=/^[A-Z0-9]{8,11}$/i.test(rawValue);message=valid?"":"Code SWIFT/BIC invalide";break;case"amount":valid=/^[0-9]+(\.[0-9]{1,2})?$/.test(rawValue.replace(",","."));message=valid?"":"Montant incorrect";}if(!valid){input.classList.add("input_invalid");input.classList.remove("input_valid");error.textContent=message;}else{input.classList.remove("input_invalid");input.classList.add("input_valid");error.textContent="";}checkForm();}
+function checkForm(){const inputs=document.querySelectorAll(".input_field");const btn=document.getElementById("btn_valid");const allValid=Array.from(inputs).every(el=>el.classList.contains("input_valid"));btn.disabled=!allValid;btn.style.backgroundColor=allValid?"slateblue":"rgb(211, 209, 230)";}
+function virement_loading(){const btn=document.getElementById("btn_valid");const loader=document.getElementById("loader");btn.style.display="none";loader.style.display="block";setTimeout(()=>{document.getElementById("alert_blocked").style.display="flex";loader.style.display="none";},2000);}
 </script>
-
-<div id="alert_blocked" style="display:none; text-align:center; color:red; margin-top:10px;">
-  ⚠️ Votre compte est temporairement bloqué.<br><br>
-  Veuillez contacter votre gestionnaire pour débloquer la situation.
-</div>
 
 </body>
 </html>
